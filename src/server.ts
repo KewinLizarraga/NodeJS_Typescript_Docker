@@ -11,6 +11,13 @@ class ServerBootstrap {
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(morgan("dev"));
     this.app.use(cors());
+
+    this.app.get("/", (req, res) => {
+      res
+        .status(200)
+        .json({ msg: `Hola, soy run API run on port: ${this.port}` });
+    });
+
     this.listen();
   }
 
