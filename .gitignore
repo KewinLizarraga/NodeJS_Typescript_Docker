@@ -1,3 +1,4 @@
+.vscode
 *.md
 node_modules
 dist
