@@ -1,5 +1,5 @@
 import * as dotenv from "dotenv";
-import { ConnectionOptions, DataSource, DataSourceOptions } from "typeorm";
+import { DataSourceOptions } from "typeorm";
 import { SnakeNamingStrategy } from "typeorm-naming-strategies";
 
 // Una clase abstracta no se puede instancear
