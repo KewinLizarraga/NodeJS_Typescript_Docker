@@ -1,5 +1,5 @@
 import * as dotenv from "dotenv";
-import { DataSourceOptions } from "typeorm";
+import { DataSource, DataSourceOptions } from "typeorm";
 import { SnakeNamingStrategy } from "typeorm-naming-strategies";
 
 // Una clase abstracta no se puede instancear
@@ -44,5 +44,9 @@ export abstract class ConfigServer {
       logging: false,
       namingStrategy: new SnakeNamingStrategy()
     };
+  }
+
+  async dbConnect(): Promise<DataSource> {
+    return await new DataSource(this.typeORMConfig).initialize();
   }
 }

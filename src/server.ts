@@ -3,11 +3,11 @@ import morgan from "morgan";
 import cors from "cors";
 import { UserRouter } from "./user/user.router";
 import { ConfigServer } from "./config/config";
-import { DataSource } from "typeorm";
+// import { DataSource } from "typeorm";
 
 class ServerBootstrap extends ConfigServer {
   public app: express.Application = express();
-  private port: number = this.getNumberEnv("PORT") || 3000;
+  private port: number = this.getNumberEnv("PORT");
 
   constructor() {
     super();
@@ -27,9 +27,9 @@ class ServerBootstrap extends ConfigServer {
     return [new UserRouter().router];
   }
 
-  async dbConnect(): Promise<DataSource> {
-    return await new DataSource(this.typeORMConfig).initialize();
-  }
+  // async dbConnect(): Promise<DataSource> {
+  //   return await new DataSource(this.typeORMConfig).initialize();
+  // }
 
   public listen() {
     this.app.listen(this.port, () =>
